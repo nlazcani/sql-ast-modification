@@ -84,8 +84,8 @@ def rebuild_sql():
 
         return jsonify({"error": "Failed to parse SQL."}), 400
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    except Exception:
+        return jsonify({"error": f"Failed to rebuild '{sql_query}'"}), 500
 
 
 if __name__ == '__main__':
