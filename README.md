@@ -1,7 +1,8 @@
 # Documentation
 
 ## Task Description
-I developed a module to parse PostgreSQL queries, generate an Abstract Syntax Tree (AST), replace column names with hashed values in the AST, maintain a map of original column names to hashed column names, and rebuild the SQL query with hashed column names. The module also includes unit tests to verify the accuracy of our functions.
+I developed a module to parse PostgreSQL queries, generate an Abstract Syntax Tree (AST), replace column names with hashed values in the AST, maintain a map of original column names to hashed column names, and rebuild the SQL query with hashed column names. Using Flask, the API is available and React.js is used to present the functionality.
+For local deployment without reviewing documentation, here are the details [Local Deployment](#local-deployment).
 
 # Table of Contents
 
@@ -238,7 +239,7 @@ Now the page should be accessible through this URL:
 http://localhost:3000
 ```
 
-## Local Deployment Steps
+## Local Deployment
 
 The local deployment can be accomplished by executing the following commands in the main directory of the project using docker-compose:
 ```bash
