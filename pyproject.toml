@@ -2,14 +2,16 @@
 name = "sql-ast-modification"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Nicolas Lazcani <nlazcani@gmail.com>"]
 readme = "README.md"
-packages = [{include = "sql_ast_modification"}]
+packages = [{include = "asthash"},{include = "backend"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 sqlglot = "^18.8.0"
 click = "^8.1.7"
+flask = "^2.3.3"
+flask-cors = "^4.0.0"
 
 
 [build-system]

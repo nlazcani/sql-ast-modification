@@ -27,19 +27,7 @@ def modify_ast_with_hash(ast):
         dict: A mapping of original column names to hashed column names.
     """
 
-    # def proces_node(node, column_mapping):
-    #     if isinstance(node, sqlglot.):
-    #         column_name = node.name
-    #         hashed_column = f"<hashed column name of {column_name}>"
-    #         column_mapping[column_name] = hashed_column
-    #         node.name = hashed_column
-
-    #     for child in node.children:
-    #         proces_node(child, column_mapping)
-
     column_mapping = {}
-
-    # proces_node(ast, column_mapping)
 
     for column in ast.find_all(sqlglot.exp.Column):
         column_name = column.alias_or_name.lower()

@@ -1,4 +1,6 @@
 import unittest
+
+import sqlglot
 from asthash.asthash import parse_sql_to_ast, modify_ast_with_hash, rebuild_sql_from_ast, hash_column_name
 
 
@@ -34,6 +36,11 @@ class TestSQLModification(unittest.TestCase):
         modified_ast, _ = modify_ast_with_hash(ast)
         rebuilt_sql = rebuild_sql_from_ast(modified_ast)
         self.assertEqual(rebuilt_sql, f"SELECT {hash_column_name('a')}, {hash_column_name('b')} FROM test WHERE {hash_column_name('a')} = 5")
+
+    def test_parse_sql_to_ast_error(self):
+        sql_query = "SELECT a, b FROM"
+        with self.assertRaises(sqlglot.errors.ParseError):
+            parse_sql_to_ast(sql_query)
 
 
 if __name__ == '__main__':

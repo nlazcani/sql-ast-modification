@@ -1,0 +1,15 @@
+# Dockerfile for the Flask backend
+FROM python:3.11-slim-buster
+
+WORKDIR /app
+
+COPY requirements.txt requirements.txt
+
+RUN pip install -r requirements.txt
+
+COPY backend/ backend/
+COPY asthash/ asthash/
+
+ENV PYTHONPATH "${PYTHONPATH}:/app"
+
+CMD ["python", "backend/app.py"]
