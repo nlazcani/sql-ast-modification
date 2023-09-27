@@ -3,6 +3,51 @@
 ## Task Description
 I developed a module to parse PostgreSQL queries, generate an Abstract Syntax Tree (AST), replace column names with hashed values in the AST, maintain a map of original column names to hashed column names, and rebuild the SQL query with hashed column names. The module also includes unit tests to verify the accuracy of our functions.
 
+# Table of Contents
+
+- [Implementation Steps](#implementation-steps)
+  - [Parse SQL to AST](#parse-sql-to-ast)
+  - [Modify AST](#modify-ast)
+  - [Rebuild SQL from modified AST](#rebuild-sql-from-modified-ast)
+  - [Write Unit Tests](#write-unit-tests)
+- [SQL Query Parser and Modifier Module](#sql-query-parser-and-modifier-module)
+  - [Installation](#installation)
+    - [Requirements](#requirements)
+    - [Steps](#steps)
+  - [Usage](#usage)
+  - [Testing](#testing)
+- [Backend](#backend)
+  - [Technologies Used](#technologies-used)
+  - [API Endpoints](#api-endpoints)
+    - [Parse SQL](#parse-sql)
+    - [Modify SQL](#modify-sql)
+    - [Rebuild SQL](#rebuild-sql)
+  - [Database](#database)
+  - [Installation](#installation-1)
+    - [Requirements](#requirements-1)
+    - [Steps](#steps-1)
+  - [Run the Application](#run-the-application)
+  - [Testing](#testing-1)
+  - [Access the API](#access-the-api)
+- [Frontend](#frontend)
+  - [Features](#features)
+  - [Technologies Used](#technologies-used-1)
+  - [Installation](#installation-2)
+    - [Requirements](#requirements-2)
+    - [Steps](#steps-2)
+  - [Run the Application](#run-the-application-1)
+- [Local Deployment Steps](#local-deployment-steps)
+- [AWS Deployment Steps](#aws-deployment-steps)
+  - [Create AWS Resources](#create-aws-resources)
+  - [Container Registry](#container-registry)
+  - [Backend Deployment](#backend-deployment)
+  - [Frontend Deployment](#frontend-deployment)
+  - [Environment Configuration](#environment-configuration)
+  - [Security](#security)
+  - [Logging and Monitoring](#logging-and-monitoring)
+- [Architecture Overview](#architecture-overview)
+
+
 ## Implementation Steps
 ### Parse SQL to AST:
 1. I utilize the `sqlglot` library to parse the SQL query string, resulting in the generation of an AST. I did not utilize `sqlparse` because it did not provide a distinct column definition, and `psqlparse` is no longer up-to-date.
@@ -27,8 +72,8 @@ This Python module provides a command-line interface for parsing SQL queries int
 
 #### Requirements
 - Python 3.11
-- sqlglot ^18.8.0"
-- click ^8.1.7"
+- sqlglot ^18.8.0
+- click ^8.1.7
 #### Steps
 1. Clone this repository.
 2. Install the required Python libraries, if not already installed:
@@ -63,7 +108,10 @@ python -m unittest tests/test_asthash.py
 ## Backend
 
 The backend is tasked with parsing, modifying, and reconstructing SQL queries through the application of methods from the earlier module in similar enpoints.
-This was built using `Python` and the `Flask` framework.
+
+### Technologies Used
+
+- **Flask:** Flask was used in this project for building a lightweight and flexible backend API to handle PostgreSQL query parsing and modification while keeping the application simple and easy to maintain.
 
 ### API Endpoints
 
@@ -162,7 +210,7 @@ The frontend offers the following features:
 
 4. **Display Result:** The generated AST, the modified AST or the SQL with hashed column names is displayed to the user.
 
-## Technologies Used
+### Technologies Used
 
 - **React.js:** The frontend is built using React.js, a popular JavaScript library for building user interfaces.
 
@@ -192,12 +240,13 @@ http://localhost:3000
 
 ## Local Deployment Steps
 
-The local deployment can be accomplished by executing the following command in the main directory of the project using docker-compose:
+The local deployment can be accomplished by executing the following commands in the main directory of the project using docker-compose:
 ```bash
+docker-compose build
 docker-compose up
 ```
 
-## AWS Deployment Steps
+## AWS Deployment
 
 #### 1. Create AWS Resources:
 - **Elastic Container Service (ECS):**  Set up an ECS cluster for running Docker containers.
